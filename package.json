@@ -1,0 +1,86 @@
+{
+  "name": "kanban-vsc",
+  "displayName": "Kanban VSC",
+  "description": "Kanban board backed by docs/ folder structure",
+  "version": "0.0.1",
+  "publisher": "Veizeczek",
+  "private": true,
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kanban-vsc.open",
+        "title": "Open Kanban Board",
+        "category": "Kanban",
+        "icon": "$(tasklist)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "kanban-vsc-bar",
+          "title": "Kanban",
+          "icon": "media/kanban.svg"
+        }
+      ]
+    },
+    "views": {
+      "kanban-vsc-bar": [
+        {
+          "type": "webview",
+          "id": "kanban-vsc.sidebar",
+          "name": "Kanban"
+        }
+      ]
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "kanban-vsc.open",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "kanban-vsc.open"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "test": "npm run compile && node --test tests/*.test.cjs",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node -e \"const fs=require('fs'),path=require('path');const src=path.join('node_modules','@picocss','pico','css','pico.min.css');const dst=path.join('media','pico.min.css');if(fs.existsSync(src))fs.copyFileSync(src,dst);\""
+  },
+  "devDependencies": {
+    "@picocss/pico": "^2.0.0",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.0.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Veizeczek/kanban-vsc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Veizeczek/kanban-vsc/issues"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "Kanban modifies workspace documents and can run Git commits. Trust the workspace to enable it."
+    },
+    "virtualWorkspaces": false
+  }
+}

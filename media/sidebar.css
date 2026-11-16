@@ -1,0 +1,305 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--vscode-font-family, sans-serif);
+  font-size: 12px;
+  color: var(--vscode-foreground);
+  background: var(--vscode-sideBar-background);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+#sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 8px;
+}
+
+.sidebar-bottom-bar {
+  margin-top: auto;
+  padding: 8px 10px;
+  border-top: 1px solid var(--vscode-sideBarSectionHeader-border, rgba(255, 255, 255, 0.08));
+  background: var(--vscode-sideBar-background);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+.sidebar-green-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: inherit;
+  background: #27ae60;
+  color: #ffffff;
+  border: 1px solid #219653;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.sidebar-green-btn:hover {
+  background: #2ecc71;
+  border-color: #27ae60;
+}
+
+.sidebar-goal-section {
+  margin-bottom: 8px;
+}
+
+.sidebar-goal-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px 3px;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.sidebar-goal-section-header:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+
+.sidebar-goal-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #27ae60;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-goal-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 14px;
+  line-height: 1.4;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.sidebar-goal-row:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+
+.sidebar-goal-row.completed .sidebar-goal-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.sidebar-goal-checkbox {
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #27ae60;
+  flex-shrink: 0;
+}
+
+.sidebar-goal-text {
+  flex: 1;
+  font-size: 11px;
+  word-break: break-word;
+  color: var(--vscode-foreground);
+}
+
+.sidebar-goal-delete-btn {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--vscode-descriptionForeground, #888);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.12s, color 0.12s;
+}
+
+.sidebar-goal-row:hover .sidebar-goal-delete-btn,
+.sidebar-goal-section-header:hover .sidebar-goal-delete-btn,
+.sidebar-goal-delete-btn:focus-visible {
+  opacity: 0.6;
+  pointer-events: auto;
+}
+
+.sidebar-goal-delete-btn:hover {
+  opacity: 1;
+  color: #ff7675;
+}
+
+.open-board-btn {
+  display: block;
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none;
+  border-bottom: 1px solid var(--vscode-sideBarSectionHeader-border, rgba(255,255,255,0.08));
+  border-radius: 0;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.open-board-btn:hover { background: var(--vscode-button-hoverBackground); }
+
+.group {
+  margin-bottom: 4px;
+  min-height: 30px;
+}
+
+.group.empty {
+  padding-bottom: 6px;
+}
+
+.group-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px 3px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c, #888);
+}
+
+.group-count {
+  font-weight: 400;
+  opacity: 0.6;
+  font-size: 10px;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 10px 3px 20px;
+  cursor: pointer;
+  line-height: 1.45;
+  transition: background 0.1s;
+}
+
+.task-row:hover { background: var(--vscode-list-hoverBackground); }
+
+.task-row[draggable] { cursor: grab; }
+.task-row.dragging   { opacity: 0.4; cursor: grabbing; }
+
+.group.drop-target {
+  background: var(--vscode-list-dropBackground, rgba(255,255,255,0.08));
+  border-radius: 3px;
+}
+
+.group.drop-target .group-label {
+  background: var(--vscode-list-dropBackground, rgba(255,255,255,0.08));
+  border-radius: 3px;
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c, #888);
+}
+
+.task-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--vscode-foreground);
+}
+
+.copy-path-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--vscode-foreground);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s, background 0.12s;
+}
+
+.task-row:hover .copy-path-btn,
+.copy-path-btn:focus-visible,
+.copy-path-btn.copied {
+  opacity: 0.72;
+  pointer-events: auto;
+}
+
+.copy-path-btn:hover {
+  opacity: 1;
+  background: var(--vscode-toolbar-hoverBackground, rgba(128, 128, 128, 0.25));
+}
+
+.copy-path-btn .icon-check {
+  display: none;
+  font-size: 11px;
+  line-height: 1;
+  color: #6dbf67;
+}
+
+.copy-path-btn.copied {
+  opacity: 1;
+}
+
+.copy-path-btn.copied .icon-copy {
+  display: none;
+}
+
+.copy-path-btn.copied .icon-check {
+  display: inline;
+}
+
+.empty-msg {
+  padding: 14px 10px;
+  color: var(--vscode-descriptionForeground);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.empty-msg button {
+  display: block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.empty-msg button:hover { background: var(--vscode-button-hoverBackground); }

@@ -1,0 +1,32 @@
+/* Google Material Symbols Outlined, bundled locally. See icons/LICENSE. */
+.material-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  font-size: 18px;
+  vertical-align: middle;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask: var(--material-icon) center / contain no-repeat;
+  mask: var(--material-icon) center / contain no-repeat;
+  pointer-events: none;
+}
+.card-copy-btn .material-icon, .copy-path-btn .material-icon { font-size: 12px; }
+.goal-op-btn .material-icon, .goal-delete-btn .material-icon,
+.doc-delete-btn .material-icon, .sidebar-goal-delete-btn .material-icon { font-size: 14px; }
+.card-copy-btn.copied .icon-check, .copy-path-btn.copied .icon-check { display: inline-block; }
+.mi-add { --material-icon: url("icons/add.svg"); }
+.mi-check { --material-icon: url("icons/check.svg"); }
+.mi-close { --material-icon: url("icons/close.svg"); }
+.mi-content_copy { --material-icon: url("icons/content_copy.svg"); }
+.mi-delete { --material-icon: url("icons/delete.svg"); }
+.mi-flag { --material-icon: url("icons/flag.svg"); }
+.mi-open_in_new { --material-icon: url("icons/open_in_new.svg"); }
+.mi-post_add { --material-icon: url("icons/post_add.svg"); }
+.mi-refresh { --material-icon: url("icons/refresh.svg"); }
+.mi-save { --material-icon: url("icons/save.svg"); }
+.mi-settings { --material-icon: url("icons/settings.svg"); }
+.mi-smart_toy { --material-icon: url("icons/smart_toy.svg"); }
+.mi-view_kanban { --material-icon: url("icons/view_kanban.svg"); }
+.mi-push_pin { --material-icon: url("icons/push_pin.svg"); }
+.mi-sort { --material-icon: url("icons/sort.svg"); }
